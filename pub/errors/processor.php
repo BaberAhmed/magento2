@@ -302,6 +302,8 @@ class Processor
         $documentRoot = '';
         if (!empty($_SERVER['DOCUMENT_ROOT'])) {
             $documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
+            /* normalising DOCUMENT_ROOT as we will be adding in error directory path via ERROR_DIR const */
+            $documentRoot = rtrim($documentRoot, 'pub');
         }
         return dirname($documentRoot . $this->_scriptName) . '/';
     }
